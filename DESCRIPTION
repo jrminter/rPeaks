@@ -1,0 +1,12 @@
+Package: rPeaks
+Title: Finds peaks in spectra using C library by Miroslav Morhac
+Version: 0.0.0.9000
+Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
+Maintainer: John Minter <jrminter@gmail.com>
+Description: This is a re-write of the Peaks package by M.Kondrin written to use current build techniques.
+Depends:
+    R (>= 3.2.0)
+Suggests:
+    testthat
+License: GPL (>= 2)
+LazyData: true
