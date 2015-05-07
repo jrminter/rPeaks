@@ -1,12 +1,17 @@
 Package: rPeaks
-Title: Finds peaks in spectra using C library by Miroslav Morhac
-Version: 0.0.0.9000
+Title: Finds peaks in spectra and find / remove continuum
+Version: 0.0.1
 Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
 Maintainer: John Minter <jrminter@gmail.com>
-Description: This is a re-write of the Peaks package by M.Kondrin written to use current build techniques.
+Description: This is a re-write of the Peaks package maintained by
+    M.Kondrin based upon a C library written by Miroslav Morhac
+    written to use current build techniques.
 Depends:
     R (>= 3.2.0)
 Suggests:
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 License: GPL (>= 2)
 LazyData: true
+VignetteBuilder: knitr

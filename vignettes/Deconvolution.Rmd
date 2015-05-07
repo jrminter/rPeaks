@@ -1,0 +1,58 @@
+---
+title: "Spectrum Deconvolution"
+author: "John Minter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Spectrum Deconvolution}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+## Introduction
+
+This example demonstrates the use of rPeaks for the deconvolution of
+monthly sunspots data using a Lorentzian profile.
+
+First, load the packages we need
+
+```{r}
+library(datasets)
+library(rPeaks)
+library(stats)
+library(graphics)
+```
+
+Next, generate the spectrum
+
+```{r}
+smf <- abs(fft(spec.taper(as.vector(sunspot.month),p=0.5)))
+```
+
+Remove the background from the spectrum
+
+```{r}
+p <- smf-SpectrumBackground(smf,iterations=100)
+```
+
+
+Generate a Lorentzian responce vector with FWHM=pi*5
+
+```{r}
+x <- 1:100
+Z <-1/(1+((x-pi*5)/5)^2)
+```
+
+Deconvolve the low-frequency region of spectrum
+
+```{r}
+l <- SpectrumDeconvolution(p[1:500],Z,iterations=20,boost=1.1,
+                           repetitions=4)
+```
+
+Now, plot the results
+
+```{r, fig.width=7, fig.height=4}
+plot(p,type="p", xlim=c(0,200), ylim=c(0,80000))
+lines(l,col="red")
+```

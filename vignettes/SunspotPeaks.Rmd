@@ -1,0 +1,56 @@
+---
+title: "Sunspot Peaks"
+author: "John Minter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Sunspot Peaks}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+## Introduction
+
+This example demonstrates the use of rPeaks to locate the peaks in monthly sunspot data.
+
+First, load the packages we need
+
+```{r}
+library(datasets)
+library(rPeaks)
+library(stats)
+library(graphics)
+```
+
+Next, generate the spectrum
+
+```{r}
+smf <- abs(fft(spec.taper(as.vector(sunspot.month),p=0.5)))
+```
+
+Find the background for the spectrum
+
+```{r}
+smb <- SpectrumBackground(smf,iterations=100)
+```
+
+
+Find the peaks
+
+```{r}
+z <- SpectrumSearch(smf-smb)
+```
+
+
+
+Now, plot the results
+
+```{r, fig.width=7, fig.height=4}
+plot(smf-smb,type="l",xlim=c(0,200))
+lines(z$y,type="l",col="red")
+points(y=rep(-10,length(z$pos)),x=z$pos,col="green",pch="+",cex=2)
+text(100, 25000, paste(length(z$pos)/2," harmonics were found with ",
+            z$pos[1],"-month base period",sep=""))
+```
+
+Note that `r length(z$pos)/2` harmonics were found with a `r z$pos[1]` month base period.
