@@ -1,11 +1,15 @@
 Package: rPeaks
 Title: Finds peaks in spectra and find / remove continuum
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
 Maintainer: John Minter <jrminter@gmail.com>
 Description: This is a re-write of the Peaks package maintained by
     M.Kondrin based upon a C library written by Miroslav Morhac
-    written to use current build techniques.
+    written to use current build techniques. I did add functions to
+    estimate the Gaussian parameters from a centroid and then to
+    extract and fit the peak to a Gaussian distribution. This is
+    a helpful way to find the centroid of a pseudo-Gaussian peak
+    with a measurable precison.
 Depends:
     R (>= 3.2.0)
 Suggests:
