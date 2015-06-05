@@ -1,6 +1,6 @@
 Package: rPeaks
 Title: Finds peaks in spectra and find / remove continuum
-Version: 0.0.30
+Version: 0.0.31
 Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
 Maintainer: John Minter <jrminter@gmail.com>
 Description: This is a re-write of the Peaks package maintained by

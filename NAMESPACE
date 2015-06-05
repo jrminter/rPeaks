@@ -2,6 +2,9 @@
 
 export(EstimateGaussianParameters)
 export(FitPeakToGaussian)
+export(FitSingleLogNormal)
+export(PeakEstimateMu)
+export(PeakEstimateSigma)
 export(SpectrumBackground)
 export(SpectrumDeconvolution)
 export(SpectrumSearch)
